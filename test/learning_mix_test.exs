@@ -2,7 +2,11 @@ defmodule LearningMixTest do
   use ExUnit.Case
   doctest LearningMix
 
-  test "greets the world" do
-    assert LearningMix.hello() == :world
+  setup_all do
+    {:ok, recipient: :world}
+  end
+
+  test "greets", state do
+    assert LearningMix.hello() == state[:recipient]
   end
 end
